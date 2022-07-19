@@ -1,6 +1,6 @@
-import React from 'react'
-import { View, Text, Image, TouchableOpacity } from 'react-native'
-import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons"
+import React from "react";
+import { View, Text, Image, TouchableOpacity } from "react-native";
+import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 
 export const localRestaurants = [
   {
@@ -35,42 +35,43 @@ export const localRestaurants = [
 export default function RestaurantItem({ navigation, ...props }) {
   return (
     <>
-      {
-        props.restaurantsData.map((restaurant, index) => (
-          <TouchableOpacity 
-            key={index} 
-            activeOpacity={1} 
-            style={{ marginBottom: 30 }} 
-            onPress={() => navigation.navigate('RestaurantDetail', {
+      {props.restaurantsData.map((restaurant, index) => (
+        <TouchableOpacity
+          key={index}
+          activeOpacity={1}
+          style={{ marginBottom: 30 }}
+          onPress={() =>
+            navigation.navigate("RestaurantDetail", {
               name: restaurant.name,
               image: restaurant.image_url,
-              price:restaurant.price,
-              reviews:restaurant.reviews,
+              price: restaurant.price,
+              reviews: restaurant.reviews,
               rating: restaurant.rating,
-              categories:restaurant.categories
-            })}>
-            <View
-              style={{
-                marginTop: 10,
-                padding: 15,
-                backgroundColor: "white"
-              }}
-            >
-              <RestaurantImage image={restaurant.image_url} />
-              <RestaurantInfo name={restaurant.name} rating={restaurant.rating} />
-            </View>
-          </TouchableOpacity>
-        ))
-      }
+              categories: restaurant.categories,
+            })
+          }
+        >
+          <View
+            style={{
+              marginTop: 10,
+              padding: 15,
+              backgroundColor: "white",
+            }}
+          >
+            <RestaurantImage image={restaurant.image_url} />
+            <RestaurantInfo name={restaurant.name} rating={restaurant.rating} />
+          </View>
+        </TouchableOpacity>
+      ))}
     </>
-  )
+  );
 }
 
 const RestaurantImage = (props) => (
   <>
     <Image
       source={{
-        uri: props.image
+        uri: props.image,
       }}
       style={{ width: "100%", height: 180 }}
     />
@@ -78,7 +79,7 @@ const RestaurantImage = (props) => (
       <MaterialCommunityIcons name="heart-outline" size={25} color="#fff" />
     </TouchableOpacity>
   </>
-)
+);
 
 const RestaurantInfo = (props) => (
   <View
@@ -100,11 +101,10 @@ const RestaurantInfo = (props) => (
         width: 30,
         alignItems: "center",
         justifyContent: "center",
-        borderRadius: 15
+        borderRadius: 15,
       }}
     >
       <Text>{props.rating}</Text>
     </View>
   </View>
-
-)
+);
